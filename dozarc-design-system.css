@@ -1012,14 +1012,19 @@ input, textarea, select {
 }
 
 .metric-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  padding: var(--space-10) var(--space-6);
+  min-height: 300px;
+  padding: var(--space-8) var(--space-6);
   background-color: var(--bg-light-secondary);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
 }
 
 .metric-card__value {
+  order: 2;
   font-size: var(--text-5xl);
   font-weight: var(--font-bold);
   line-height: var(--leading-tight);
@@ -1034,20 +1039,24 @@ input, textarea, select {
 }
 
 .metric-card__label {
+  order: 3;
   font-size: var(--text-base);
   font-weight: var(--font-semibold);
+  line-height: var(--leading-snug);
   letter-spacing: var(--tracking-wider);
   text-transform: uppercase;
   color: var(--text-secondary-light);
   margin-top: var(--space-2);
+  min-height: 4.05em;
 }
 
 .metric-card__icon {
-  width: 32px;
-  height: 32px;
-  margin: var(--space-4) auto 0;
-  color: var(--text-secondary-light);
-  opacity: 0.6;
+  order: 1;
+  width: 76px;
+  height: 76px;
+  margin: 0 auto var(--space-5);
+  color: var(--accent-coral);
+  opacity: 1;
 }
 
 .metrics__footnote {
