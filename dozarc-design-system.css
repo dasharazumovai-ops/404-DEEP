@@ -1661,24 +1661,174 @@ input, textarea, select {
 }
 
 .video__header {
-  margin-bottom: var(--space-12);
+  margin-bottom: var(--space-20, 5rem);
   max-width: 48rem;
 }
 
-.video__frame {
+.video__cover {
+  position: relative;
+  display: block;
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
+  padding: 0;
   border: 1px solid var(--border-dark);
-  background: #000;
+  border-radius: 32px;
+  overflow: hidden;
+  background: #fff;
+  cursor: pointer;
+  aspect-ratio: 16 / 9;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
 }
 
-.video__player {
+.video__cover img {
   display: block;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.video__cover:hover img {
+  transform: scale(1.03);
+}
+
+.video__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 88px;
+  height: 88px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(13, 19, 32, 0.88);
+  color: #fff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.video__play svg {
+  margin-left: 4px;
+}
+
+.video__cover:hover .video__play {
+  transform: translate(-50%, -50%) scale(1.08);
+  background: rgba(13, 19, 32, 1);
+}
+
+.video__cover:focus-visible {
+  outline: 3px solid var(--accent-turquoise, #2dd4bf);
+  outline-offset: 4px;
+}
+
+@media (max-width: 767px) {
+  .video__cover { border-radius: 20px; }
+  .video__play { width: 68px; height: 68px; }
+}
+
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4vh 4vw;
+  background: rgba(5, 8, 14, 0.92);
+}
+
+.video-modal[hidden] {
+  display: none;
+}
+
+.video-modal__player {
+  display: block;
+  width: min(100%, 1400px);
+  max-height: 100%;
   aspect-ratio: 16 / 9;
   background: #000;
+  border-radius: 16px;
+}
+
+.video-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.video-modal__close:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ==========================================================================
+   Process collage (one seamless canvas of three slanted images)
+   ========================================================================== */
+
+.process-collage {
+  --slant: 64px;
+  display: flex;
+  align-items: stretch;
+  aspect-ratio: 21 / 9;
+  background: var(--bg-dark);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.process-collage__panel {
+  position: relative;
+  flex: 1 1 0;
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  clip-path: polygon(var(--slant) 0, 100% 0, calc(100% - var(--slant)) 100%, 0 100%);
+}
+
+/* panels tile exactly along the slant; 1px overlap hides anti-aliasing seams */
+.process-collage__panel + .process-collage__panel {
+  margin-left: calc(var(--slant) * -1 - 1px);
+}
+
+.process-collage__panel:first-child {
+  clip-path: polygon(0 0, 100% 0, calc(100% - var(--slant)) 100%, 0 100%);
+}
+
+.process-collage__panel:last-child {
+  clip-path: polygon(var(--slant) 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.process-collage__panel img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .process-collage {
+    flex-direction: column;
+    aspect-ratio: auto;
+  }
+  .process-collage__panel,
+  .process-collage__panel:first-child,
+  .process-collage__panel:last-child {
+    clip-path: none;
+    flex: none;
+    aspect-ratio: 16 / 10;
+  }
+  .process-collage__panel + .process-collage__panel {
+    margin-left: 0;
+  }
 }

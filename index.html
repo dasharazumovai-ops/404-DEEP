@@ -66,7 +66,7 @@
           </div>
         </div>
         <div class="hero__visual">
-          <img src="hero-visual.jpg" alt="Shopper ordering groceries on a DOZARC touchscreen kiosk inside a store" style="object-position:62% center;">
+          <img src="hero-visual.jpg" alt="DOZARC pickup stations and order kiosk inside a bright grocery store" style="object-position:35% center;">
         </div>
       </div>
     </div>
@@ -78,12 +78,12 @@
         <span class="label">See it in action</span>
         <h2 class="heading-section">DOZARC Flow, start to finish.</h2>
       </div>
-      <div class="video__frame">
-        <video class="video__player" controls playsinline preload="metadata" poster="how-it-works-poster.jpg">
-          <source src="how-it-works.mp4" type="video/mp4">
-          Your browser does not support embedded video.
-        </video>
-      </div>
+      <button type="button" class="video__cover" id="videoOpen" aria-label="Play video: DOZARC Flow, start to finish">
+        <img src="video-cover.jpg" alt="" loading="lazy">
+        <span class="video__play" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+      </button>
     </div>
   </section>
 
@@ -139,8 +139,13 @@
           <p class="process__step-text">Orders are handed off in minutes with full traceability.</p>
         </div>
       </div>
-      <div class="process__visual demo-placeholder">
-        [Process visual — handover station / automated system]
+      <div class="process__visual process-collage">
+        <figure class="process-collage__panel">
+          <img src="process-receive.jpg" alt="DOZARC robot unloading a container from a delivery truck" loading="lazy" style="object-position:72% center;">
+        </figure>
+        <figure class="process-collage__panel">
+          <img src="process-handover.jpg" alt="Customer ordering on a DOZARC touchscreen kiosk" loading="lazy" style="object-position:58% center;">
+        </figure>
       </div>
     </div>
   </section>
@@ -325,6 +330,13 @@
       </div>
     </div>
   </footer>
+
+  <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="DOZARC video" hidden>
+    <button type="button" class="video-modal__close" id="videoClose" aria-label="Close video">&times;</button>
+    <video class="video-modal__player" id="videoPlayer" controls playsinline preload="none" poster="video-cover.jpg">
+      <source src="how-it-works.mp4" type="video/mp4">
+    </video>
+  </div>
 
   <script src="script.js"></script>
 </body>
