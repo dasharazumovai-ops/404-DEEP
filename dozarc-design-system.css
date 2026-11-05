@@ -1650,3 +1650,35 @@ input, textarea, select {
       border: 1px dashed rgba(0,0,0,0.1);
       color: var(--text-secondary-light);
     }
+
+/* ==========================================================================
+   Video section
+   ========================================================================== */
+
+.video {
+  background-color: var(--bg-dark-secondary);
+  border-top: 1px solid var(--border-dark);
+}
+
+.video__header {
+  margin-bottom: var(--space-12);
+  max-width: 48rem;
+}
+
+.video__frame {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--border-dark);
+  background: #000;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+}
+
+.video__player {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
