@@ -1832,3 +1832,52 @@ input, textarea, select {
     margin-left: 0;
   }
 }
+
+/* ==========================================================================
+   Mobile only: tighter spacing, less empty dark space (desktop untouched)
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  .section {
+    min-height: auto;
+    justify-content: flex-start;
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-12);
+  }
+
+  .hero {
+    min-height: auto;
+    padding-top: calc(var(--space-12) + 56px);
+    padding-bottom: var(--space-10);
+  }
+
+  .hero__grid { gap: var(--space-8); }
+  .hero__actions { margin-bottom: var(--space-6); }
+  .thesis-row { margin-top: var(--space-6); gap: var(--space-4); }
+
+  /* Video section stays dark */
+  .video { background-color: var(--bg-dark); }
+  .video__header { margin-bottom: var(--space-8); }
+  .video__cover { background: var(--bg-dark); }
+
+  .process__header { margin-bottom: var(--space-8); }
+  .process__flow { gap: var(--space-4); }
+  .process__visual { margin-top: var(--space-8); }
+
+  .challenge__grid,
+  .metrics__grid,
+  .formats__grid { margin-top: var(--space-6); }
+
+  .metric-card { min-height: 0; padding: var(--space-6) var(--space-5); }
+  .metric-card__label { min-height: 0; }
+
+  .platform__stack { margin-top: var(--space-6); }
+
+  .company__grid { gap: var(--space-8); }
+  .company__visual { min-height: 0; }
+  .company__visual img { min-height: 240px !important; }
+
+  .contact__grid { gap: var(--space-8); }
+  .contact__form-wrapper { padding: var(--space-6); }
+  .footer { padding: var(--space-6) 0; }
+}
